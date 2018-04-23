@@ -1,0 +1,30 @@
+.users-edit-page{
+    .left-menu{
+        ul{
+            padding:20px 0px;
+
+            li{
+                a{
+                    width: 100%;
+                    display: inline-block;
+                    text-decoration:none;
+                    &:hover,&.active{
+                        border-left:2px solid $hover-font-color;
+                        margin-left:-2px;
+                        color:$hover-font-color;
+                    }
+                }
+            }
+        }
+    }
+    .info{
+        >div{
+            // border-right:1px dashed #ccc;
+
+            img{
+                width:60px;
+            }
+        }
+    }
+}
+

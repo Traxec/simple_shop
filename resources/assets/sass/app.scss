@@ -1,0 +1,50 @@
+// Variables
+@import "variables";
+
+// Bootstrap
+@import "~bootstrap-sass/assets/stylesheets/bootstrap";
+
+// global variable
+$hover_font_color : #b4a078;
+
+/* universal */
+body {
+    font-family: Hiragino Sans GB, "Hiragino Sans GB", Helvetica, "Microsoft YaHei", Arial,sans-serif;
+    /* Margin bottom by footer height */
+    margin-bottom: 204px;
+    background:#f4f0ea;
+}
+li{
+    list-style:none;
+}
+a:hover{
+    text-decoration:none;
+}
+
+/* header */
+@import "header";
+
+/* Sticky footer styles */
+html {
+    position: relative;
+    min-height: 100% ;
+}
+
+/* User register page */
+.register-page {
+    img.captcha {
+        margin-bottom: 0px;
+        width:110px;
+        height:36px;
+        cursor: pointer;
+    }
+}
+
+/* index-page */
+@import "root-page";
+
+/* users person info */
+@import "users-app";
+
+/* footer */
+@import "footer";
