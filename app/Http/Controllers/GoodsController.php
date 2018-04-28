@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Goods;
+use App\Goods_category;
 use Illuminate\Http\Request;
 
 class GoodsController extends Controller
@@ -12,9 +13,9 @@ class GoodsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Goods_category $Goods_category)
     {
-        return view('goods.index');
+        return view('goods.index', compact('goods_category'));
     }
 
     /**

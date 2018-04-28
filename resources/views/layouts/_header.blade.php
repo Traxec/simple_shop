@@ -61,39 +61,28 @@
     <div class="container"> 
         <a href=""></a>
         <ul>
-            <li class="pull-left"><a href="">首页</a></li>
-            <li class="pull-left"><a href="" class="selected">首页</a></li>
-            <li class="pull-left"><a href="">首页</a></li>
-            <li class="pull-left"><a href="">首页</a></li>
+            @foreach($Goods_categories as $Goods_category)
+                @if($Goods_category->id<10)
+                    <li class="pull-left"><a href="#home" data-toggle="tab">{{ $Goods_category->name }}</a></li>
+                @endif
+            @endforeach
             <div class="clearfix"></div>
         </ul>
     </div>
     <div class="menu">
-        <ul class="container">
-            <li class="pull-left">
-                <a href=""><img src="{{asset('./images/4f00675caefd0d4177892ad18bfc2df6.png')}}" alt=""><p>哆啦A梦</p></a>
-            </li>
-            <li class="pull-left">
-                <a href=""><img src="{{asset('./images/8bbcd7de60a678846664af998f57e71c.png')}}" alt=""><p>hello kitty</p></a>
-            </li>
-            <li class="pull-left">
-                <a href=""><img src="{{asset('./images/243e5bf327a87217ad1f54592f0176ec.png')}}" alt=""><p></p></a>
-            </li>
-            <li class="pull-left">
-                <a href=""><img src="{{asset('./images/927bc33f7ae2895dd6c11cf91f5e3228.png')}}" alt=""><p></p></a>
-            </li>
-            <li class="pull-left">
-                <a href=""><img src="{{asset('./images/a0352c57c60ce4f68370ecdab6a30857.png')}}" alt=""><p></p></a>
-            </li>
-            <li class="pull-left">
-                <a href=""><img src="{{asset('./images/ab0df9445d985bf6719ac415313a8e88.png')}}" alt=""><p></p></a>
-            </li>
-            <li class="pull-left">
-                <a href=""><img src="{{asset('./images/fdc048e1bf4f04d1c20b32eda5d1dc6e.png')}}" alt=""><p></p></a>
-            </li>
-            <li class="pull-left">
-                <a href=""><img src="{{asset('./images/fdc048e1bf4f04d1c20b32eda5d1dc6e.png')}}" alt=""><p></p></a>
-            </li>
-        </ul>
+        {{-- @foreach($Goods_categories as $Goods_category) --}}
+            {{-- @if($Goods_category->parent_id>=10) --}}
+                <ul class="container" id="home">
+                    <li class="pull-left">
+                        <a href=""><img src="{{asset('./images/4f00675caefd0d4177892ad18bfc2df6.png')}}" alt=""><p>哆啦A梦</p></a>
+                    </li>
+                </ul>
+                <ul class="container" id="page">
+                    <li class="pull-left">
+                        <a href=""><img src="{{asset('./images/4f00675caefd0d4177892ad18bfc2df6.png')}}" alt=""><p>哆啦A梦</p></a>
+                    </li>
+                </ul>
+            {{-- @endif --}}
+        {{-- @endforeach --}}
     </div>
 </nav>

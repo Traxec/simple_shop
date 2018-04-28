@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-use App\goods_category;
+use App\Goods_category;
 
 class SeedGoodsCategoriesData extends Migration
 {
@@ -14,24 +14,30 @@ class SeedGoodsCategoriesData extends Migration
      */
     public function up()
     {
-        $name = [
-            [1 => 'a'],
-            [2 => 'b'],
-            [3 => 'c'],
-            [4 => 'd'],
-            [5 => 'e'],
-            [6 => 'f'],
-            [7 => 'g'],
-            [8 => 'h'],
-            [9 => 'i'],
-            [10 => 'j'],
+        $faker = app(Faker\Generator::class);
+
+        $parentName = [
+            1 => '首页',
+            2 => '居家',
+            3 => '配件',
+            4 => '服装',
+            5 => '电器',
+            6 => '洗护',
+            7 => '饮食',
+            8 => '餐厨',
+            9 => '婴童',
         ];
-        factory(App\goods_category::class, 10)->create();
-        foreach($name[0] as $key => $value){
-            $goods_category = goods_category::find($key);
-            $goods_category ->name = $value;
-            $goods_category ->save();
-        }
+        $Goods_category = factory(App\Goods_category::class, 100)
+            ->create()
+            ->each(function($Goods_category) use ($faker, $parentName){
+                if($Goods_category->id <= count($parentName)){
+                    $Goods_category->name = $parentName[$Goods_category->id];
+                }else{
+                    $Goods_category->parent_id = $faker->randomNumber(1);
+                }
+                $Goods_category->save();
+            });
+
     }
 
     /**
