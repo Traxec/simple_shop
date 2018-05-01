@@ -33,7 +33,7 @@ class SeedGoodsCategoriesData extends Migration
                 if($Goods_category->id <= count($parentName)){
                     $Goods_category->name = $parentName[$Goods_category->id];
                 }else{
-                    $Goods_category->parent_id = $faker->randomNumber(1);
+                    $Goods_category->parent_id = rand(1,9);
                 }
                 $Goods_category->save();
             });

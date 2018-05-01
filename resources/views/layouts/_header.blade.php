@@ -62,27 +62,20 @@
         <a href=""></a>
         <ul>
             @foreach($Goods_categories as $Goods_category)
-                @if($Goods_category->id<10)
-                    <li class="pull-left"><a href="#home" data-toggle="tab">{{ $Goods_category->name }}</a></li>
-                @endif
+                <li class="pull-left"><a href="#home" data-toggle="{{ $Goods_category->id }}">{{ $Goods_category->name}}</a></li>
             @endforeach
             <div class="clearfix"></div>
         </ul>
     </div>
     <div class="menu">
-        {{-- @foreach($Goods_categories as $Goods_category) --}}
-            {{-- @if($Goods_category->parent_id>=10) --}}
-                <ul class="container" id="home">
+        @foreach($Goods_categories as $Goods_category)
+            <ul class="container hide" id="home{{$Goods_category->id}}">
+                @foreach($Goods_category->children as $Goods_category_child)
                     <li class="pull-left">
-                        <a href=""><img src="{{asset('./images/4f00675caefd0d4177892ad18bfc2df6.png')}}" alt=""><p>哆啦A梦</p></a>
+                        <a href=""><img src="{{asset('./images/4f00675caefd0d4177892ad18bfc2df6.png')}}" alt=""><p>{{ $Goods_category_child->name }}</p></a>
                     </li>
-                </ul>
-                <ul class="container" id="page">
-                    <li class="pull-left">
-                        <a href=""><img src="{{asset('./images/4f00675caefd0d4177892ad18bfc2df6.png')}}" alt=""><p>哆啦A梦</p></a>
-                    </li>
-                </ul>
-            {{-- @endif --}}
-        {{-- @endforeach --}}
+                @endforeach
+            </ul>
+        @endforeach
     </div>
 </nav>
