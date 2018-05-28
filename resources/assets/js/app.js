@@ -21,13 +21,3 @@ const app = new Vue({
     el: '#app'
 });
 
-// menu hide or show
-$('.navbar-tab').find('li').hover(function(){
-    $('.menu').css('display','block');
-    $('#home'+$(this).find('a').attr('data-toggle')).removeClass('hide');
-    $('#home'+$(this).find('a').attr('data-toggle')).siblings().addClass('hide');
-});
-$('.menu').hover(function(){},function(){
-    $('.menu').css('display','none');
-    $(this).find('ul').addClass('hide');
-});
