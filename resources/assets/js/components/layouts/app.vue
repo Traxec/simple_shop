@@ -17,26 +17,27 @@
 
 <body>
     <div id="app" class="{{ route_class() }}-page">
-        {{-- @include('layouts._header') --}}
+
+        @include('layouts._header')
 
         {{-- 插入轮播 --}}
-        {{-- @yield('carousel') --}}
+        @yield('carousel')
 
-        {{-- <div class="container"> --}}
+        <div class="container">
 
-            {{-- @include('layouts._messages') --}}
+            @include('layouts._messages')
             {{-- @yield('content') --}}
             <App/>
 
-        {{-- </div> --}}
+        </div>
 
-        {{-- @include('layouts._footer') --}}
+        @include('layouts._footer')
 
     </div>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
-    {{-- @yield('scripts') --}}
+    @yield('scripts')
 
 </body>
 </html>

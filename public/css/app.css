@@ -8426,7 +8426,6 @@ a:hover {
 }
 
 .navbar-tab > div.menu {
-  display: none;
   position: absolute;
   left: 0;
   right: 0;
