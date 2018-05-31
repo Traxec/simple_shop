@@ -45888,21 +45888,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             id: null
         };
     },
-    created: function created() {
-        this.fetchData();
+    beforeCreate: function beforeCreate() {
+        var _this = this;
+
+        // this.fetchData()
+        __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/api/home').then(function (response) {
+            _this.goodsCategories = response.data;
+        });
     },
 
     methods: {
-        fetchData: function fetchData() {
-            var _this = this;
+        // fetchData() {
+        //     // this.error = this.users = null;
+        //     // this.loading = true;
 
-            // this.error = this.users = null;
-            this.loading = true;
-            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/api/home').then(function (response) {
-                _this.goodsCategories = response.data;
-            });
-        },
-
+        // },
 
         toggleShow: function toggleShow(id) {
             this.id = null;
@@ -46035,7 +46035,7 @@ var render = function() {
         {
           staticClass: "menu",
           on: {
-            mouseout: function($event) {
+            mouseleave: function($event) {
               _vm.toggleHide()
             }
           }
@@ -46507,6 +46507,7 @@ var staticRenderFns = [
       "div",
       {
         staticClass: "carousel slide",
+        staticStyle: { "margin-top": "-20px" },
         attrs: { id: "carousel-example-generic", "data-ride": "carousel" }
       },
       [
@@ -46708,7 +46709,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-8 col-md-offset-2" }, [
+      _c("div", { staticClass: "col-md-6 col-md-offset-3" }, [
         _c("div", { staticClass: "panel panel-default" }, [
           _c("div", { staticClass: "panel-heading" }, [_vm._v("注册")]),
           _vm._v(" "),
@@ -46834,9 +46835,9 @@ var staticRenderFns = [
               ]),
               _vm._v(" "),
               _c("img", {
-                staticClass: "pull-left thumbnail captcha",
+                staticClass: "col-md-2 pull-left thumbnail captcha",
                 attrs: {
-                  src: "",
+                  src: "/captcha/flat",
                   onclick: "this.src='/captcha/flat?'+Math.random()",
                   title: "点击图片重新获取验证码"
                 }

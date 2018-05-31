@@ -16,9 +16,9 @@ class AppServiceProvider extends ServiceProvider
     {
       // dd(Goods_category::all());
         // View::share('Goods_categories', Goods_category::all()->toTree());
-      view()->composer('layouts._header', function ($view) {
-        $view->with('Goods_categories',Goods_category::all()->toTree());
-      });
+      // view()->composer('layouts._header', function ($view) {
+      //   $view->with('Goods_categories',Goods_category::all()->toTree());
+      // });
     }
 
     /**
@@ -28,6 +28,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        if ($this->app->environment() !== 'production') {
+            $this->app->register(\Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class);
+        }
     }
 }

@@ -27,7 +27,7 @@ class SeedGoodsCategoriesData extends Migration
             8 => '餐厨',
             9 => '婴童',
         ];
-        $Goods_category = factory(App\Goods_category::class, 100)
+        $Goods_category = factory(App\Goods_category::class, 50)
             ->create()
             ->each(function($Goods_category) use ($faker, $parentName){
                 if($Goods_category->id <= count($parentName)){

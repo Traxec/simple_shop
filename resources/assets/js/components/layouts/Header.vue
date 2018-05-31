@@ -67,7 +67,7 @@
                     <div class="clearfix"></div>
                 </ul>
             </div>
-            <div class="menu" @mouseout="toggleHide()">
+            <div class="menu" @mouseleave="toggleHide()">
                 <ul class="container" 
                 :class="{'hide': id !== goodsCategory.id}" 
                 v-for="goodsCategory in goodsCategories">
@@ -91,19 +91,19 @@ export default{
             id: null,
         }
     },
-    created(){
-        this.fetchData()
+    beforeCreate(){
+        // this.fetchData()
+        axios.get('/api/home')
+            .then(response =>{
+                this.goodsCategories = response.data
+            });
     },
     methods: {
-        fetchData() {
-            // this.error = this.users = null;
-            this.loading = true;
-            axios
-                .get('/api/home')
-                .then(response =>{
-                    this.goodsCategories = response.data
-                });
-        },
+        // fetchData() {
+        //     // this.error = this.users = null;
+        //     // this.loading = true;
+
+        // },
 
         toggleShow: function(id){
             this.id = null

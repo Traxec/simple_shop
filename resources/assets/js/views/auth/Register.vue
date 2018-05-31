@@ -1,6 +1,6 @@
 <template>
 	<div class="row">
-		<div class="col-md-8 col-md-offset-2">
+		<div class="col-md-6 col-md-offset-3">
 			<div class="panel panel-default">
 				<div class="panel-heading">注册</div>
 
@@ -59,7 +59,7 @@
 								<strong></strong>
 							</span>
 						</div>
-						<img class="pull-left thumbnail captcha" src="" onclick="this.src='/captcha/flat?'+Math.random()" title="点击图片重新获取验证码">
+						<img class="col-md-2 pull-left thumbnail captcha" src="/captcha/flat" onclick="this.src='/captcha/flat?'+Math.random()" title="点击图片重新获取验证码">
 					</div>
 
 					<div class="form-group">
