@@ -2,6 +2,8 @@ require('./bootstrap')
 
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import validator from './directives/validator'
+Vue.directive('validator', validator)
 
 Vue.use(VueRouter)
 

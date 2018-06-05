@@ -10,7 +10,7 @@
 						<label for="name" class="col-md-4 control-label">用户名</label>
 
 						<div class="col-md-6">
-							<input id="name" type="text" class="form-control" name="name" value="" required autofocus>
+							<input v-model="name" v-validator:input.required="{ regex: /^[a-zA-Z]+\w*\s?\w*$/, error: '用户名要求以字母开头的单词字符' }" id="name" type="text" class="form-control" name="name" required autofocus>
 
 							<span class="help-block">
 								<strong></strong>
@@ -22,7 +22,7 @@
 						<label for="email" class="col-md-4 control-label">E-Mail 地址</label>
 
 						<div class="col-md-6">
-							<input id="email" type="email" class="form-control" name="email" value="" required>
+							<input v-model="email" v-validator:input.required="{ regex: /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/, error: '邮箱地址正确格式为 xxx@xxx.xxx' }" id="email" type="email" class="form-control" name="email" required>
 
 							<span class="help-block">
 								<strong></strong>
@@ -34,7 +34,7 @@
 						<label for="password" class="col-md-4 control-label">密码</label>
 
 						<div class="col-md-6">
-							<input id="password" type="password" class="form-control" name="password" required>
+							<input id="password" v-model="password" v-validator.required="{ regex: /^\w{6,16}$/, error: '密码要求 6 ~ 16 个单词字符' }" type="password" class="form-control" name="password" required>
 
 							<span class="help-block">
 								<strong></strong>
@@ -46,15 +46,15 @@
 						<label for="password-confirm" class="col-md-4 control-label">再次输入密码</label>
 
 						<div class="col-md-6">
-							<input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
+							<input id="cpassword" v-model="cpassword" v-validator.required="{ target: '#password' }" type="password" class="form-control" name="cpassword" required>
 						</div>
 					</div>
 
 					<div class="form-group">
-						<label for="captcha" class="col-md-4 control-label">验证码</label>
+						<label for="captcha" class="col-md-4 control-label">图片验证码</label>
 
 						<div class="col-md-4">
-							<input id="captcha" class="form-control" name="captcha" >
+							<input v-model="captcha" v-validator.required="{ title: '图片验证码' }" id="captcha" class="form-control" name="captcha" >
 							<span class="help-block">
 								<strong></strong>
 							</span>
@@ -64,7 +64,7 @@
 
 					<div class="form-group">
 						<div class="col-md-6 col-md-offset-4">
-							<button type="submit" class="btn btn-primary">
+							<button type="submit" class="btn btn-primary" @click="submit">
 								注册 
 							</button>
 						</div>
@@ -74,3 +74,31 @@
 		</div>
 	</div>
 </template>
+<script>
+	export default{
+		name: 'Register',
+		data() {
+			return {
+				name: '',
+				email: '',
+				password: '',
+				cpassword: '',
+				captcha: '',
+			}
+		},
+		methods: {
+			submit() {
+				const data = {
+					name: this.name,
+					email: this.email,
+					password: this.password,
+					captcha: this.captcha,
+				}
+				axios.post('/api/user',data).then(response =>{
+					console.log(response)
+				});
+			}
+		}
+
+	}
+</script>

@@ -2,7 +2,7 @@
 	<div>
 		<Header/>
 			<router-view/>
-		<Footer/>
+        <Footer/>
 	</div>
 </template>
 <script>
@@ -13,7 +13,7 @@
 
     	components: {
     		Header,
-    		Footer,
+    		Footer
     	}
     }
 </script>

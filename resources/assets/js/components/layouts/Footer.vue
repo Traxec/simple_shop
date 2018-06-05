@@ -4,19 +4,19 @@
       <ul>
         <li class="pull-left">
           <div>
-            <img class="pull-left" src="images/e6021a6fcd3ba0af3a10243b7a2fda0d.png" />
+            <img class="pull-left" :src="img1" />
             <p class="pull-left">30天无忧退换货</p>
           </div>
         </li>
         <li class="pull-left">
           <div>
-            <img class="pull-left" src="images/e09c44e4369232c7dd2f6495450439f1.png" />
+            <img class="pull-left" :src="img2" />
             <p class="pull-left">满88元免邮费</p>
           </div>
         </li>
         <li class="pull-left">
           <div>
-            <img class="pull-left" src="images/e72ed4de906bd7ff4fec8fa90f2c63f1.png" />
+            <img class="pull-left" :src="img3" />
             <p class="pull-left">简采品质保证</p>
           </div>
         </li>
@@ -54,3 +54,17 @@
     </div>
   </footer>
 </template>
+<script charset="utf-8">
+import img1 from '../../images/e6021a6fcd3ba0af3a10243b7a2fda0d.png'
+import img2 from '../../images/e09c44e4369232c7dd2f6495450439f1.png'
+import img3 from '../../images/e72ed4de906bd7ff4fec8fa90f2c63f1.png'
+export default{
+    data (){
+        return {
+            img1:img1,
+            img2:img2,
+            img3:img3,
+        }
+    },
+}
+</script>

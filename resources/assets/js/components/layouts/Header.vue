@@ -92,18 +92,12 @@ export default{
         }
     },
     beforeCreate(){
-        // this.fetchData()
         axios.get('/api/home')
             .then(response =>{
                 this.goodsCategories = response.data
             });
     },
     methods: {
-        // fetchData() {
-        //     // this.error = this.users = null;
-        //     // this.loading = true;
-
-        // },
 
         toggleShow: function(id){
             this.id = null

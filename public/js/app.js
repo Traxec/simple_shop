@@ -1078,7 +1078,7 @@ module.exports = Cancel;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(12);
-module.exports = __webpack_require__(55);
+module.exports = __webpack_require__(59);
 
 
 /***/ }),
@@ -1090,16 +1090,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(36);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_router__ = __webpack_require__(39);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__views_App__ = __webpack_require__(40);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__views_App___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__views_App__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__views_Home__ = __webpack_require__(48);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__views_Home___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__views_Home__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__views_auth_Register__ = __webpack_require__(53);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__views_auth_Register___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__views_auth_Register__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__directives_validator__ = __webpack_require__(40);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__views_App__ = __webpack_require__(41);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__views_App___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__views_App__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__views_Home__ = __webpack_require__(51);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__views_Home___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__views_Home__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__views_auth_Register__ = __webpack_require__(56);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__views_auth_Register___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__views_auth_Register__);
 __webpack_require__(13);
 
 
 
+
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.directive('validator', __WEBPACK_IMPORTED_MODULE_2__directives_validator__["a" /* default */]);
 
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]);
 
@@ -1112,17 +1115,17 @@ var router = new __WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]({
     routes: [{
         path: '/',
         name: 'home',
-        component: __WEBPACK_IMPORTED_MODULE_3__views_Home___default.a
+        component: __WEBPACK_IMPORTED_MODULE_4__views_Home___default.a
     }, {
         path: '/auth/register',
         name: 'register',
-        component: __WEBPACK_IMPORTED_MODULE_4__views_auth_Register___default.a
+        component: __WEBPACK_IMPORTED_MODULE_5__views_auth_Register___default.a
     }]
 });
 
 var app = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
     el: '#app',
-    components: { App: __WEBPACK_IMPORTED_MODULE_2__views_App___default.a },
+    components: { App: __WEBPACK_IMPORTED_MODULE_3__views_App___default.a },
     router: router
 });
 
@@ -45666,14 +45669,146 @@ if (inBrowser && window.Vue) {
 
 /***/ }),
 /* 40 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+function validate(el, modifiers, bindingValue) {
+  bindingValue = bindingValue && (typeof bindingValue === 'undefined' ? 'undefined' : _typeof(bindingValue)) === 'object' ? bindingValue : {};
+  var value = typeof el.value === 'string' ? el.value.trim() : '';
+  var _bindingValue = bindingValue,
+      _bindingValue$title = _bindingValue.title,
+      title = _bindingValue$title === undefined ? '该项' : _bindingValue$title,
+      error = _bindingValue.error;
+
+  var defaultError = '';
+
+  if (modifiers.required && value === '') {
+    defaultError = title + '\u4E0D\u80FD\u4E3A\u7A7A';
+  } else if (bindingValue.target) {
+    var target = document.querySelector(bindingValue.target);
+    var targetValue = target ? target.value : null;
+
+    if (targetValue !== value) {
+      defaultError = '\u8F93\u5165\u7684' + title + '\u4E0D\u5339\u914D';
+    }
+  } else if (bindingValue.regex) {
+    try {
+      if (!bindingValue.regex.test(value)) {
+        defaultError = title + '\u683C\u5F0F\u4E0D\u6B63\u786E';
+      }
+    } catch (e) {}
+  }
+
+  if (defaultError) {
+    if (error === undefined) {
+      showError(el, defaultError);
+    } else {
+      showError(el, error);
+    }
+  } else {
+    showError(el);
+  }
+}
+
+function showError(el, error) {
+  var parentElement = el.parentElement;
+  var errorElement = getErrorElement(el);
+
+  if (error === undefined) {
+    errorElement.style.display = 'none';
+    parentElement.classList.remove('has-error');
+  } else {
+    errorElement.textContent = error;
+    errorElement.style.display = 'block';
+    parentElement.classList.add('has-error');
+  }
+}
+
+function getErrorElement(el) {
+  var parentElement = el.parentElement;
+  var errorElement = parentElement.querySelector('.help-block');
+
+  if (!errorElement) {
+    var tpl = '<span class="help-block"></span>';
+    var fragment = document.createRange().createContextualFragment(tpl);
+
+    parentElement.appendChild(fragment);
+    errorElement = parentElement.querySelector('.help-block');
+  }
+
+  return errorElement;
+}
+
+/* harmony default export */ __webpack_exports__["a"] = ({
+  bind: function bind(el, binding, vnode) {
+    var value = binding.value,
+        arg = binding.arg,
+        modifiers = binding.modifiers;
+
+    var eventType = ['change', 'blur', 'input'].indexOf(arg) !== -1 ? arg : 'change';
+    var defaultHandler = function defaultHandler() {
+      showError(el);
+    };
+    var handler = function handler() {
+      validate(el, modifiers, value);
+    };
+
+    el.addEventListener('input', defaultHandler, false);
+    el.addEventListener(eventType, handler, false);
+
+    el.destroy = function () {
+      ['input', eventType].forEach(function (event) {
+        el.removeEventListener(event, handler, false);
+      });
+      el.destroy = null;
+    };
+  },
+  inserted: function inserted(el, binding, vnode) {
+    var value = binding.value,
+        modifiers = binding.modifiers;
+
+    var form = el.closest('[data-validator-form]');
+    var submitBtn = form ? form.querySelector('[type=submit]') : null;
+
+    if (submitBtn) {
+      var submitHandler = function submitHandler() {
+        validate(el, modifiers, value);
+
+        var errors = form.querySelectorAll('.has-error');
+
+        if (!errors.length) {
+          submitBtn.canSubmit = true;
+        } else {
+          submitBtn.canSubmit = false;
+        }
+      };
+
+      submitBtn.addEventListener('click', submitHandler, false);
+
+      el.destroySubmitBtn = function () {
+        submitBtn.removeEventListener('click', submitHandler, false);
+        el.destroySubmitBtn = null;
+      };
+    }
+  },
+  unbind: function unbind(el) {
+    el.destroy();
+    if (el.destroySubmitBtn) el.destroySubmitBtn();
+  }
+});
+
+/***/ }),
+/* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(41)
+var __vue_script__ = __webpack_require__(42)
 /* template */
-var __vue_template__ = __webpack_require__(47)
+var __vue_template__ = __webpack_require__(50)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -45712,14 +45847,14 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 41 */
+/* 42 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_layouts_Header__ = __webpack_require__(42);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_layouts_Header__ = __webpack_require__(43);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_layouts_Header___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_layouts_Header__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_layouts_Footer__ = __webpack_require__(45);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_layouts_Footer__ = __webpack_require__(46);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_layouts_Footer___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__components_layouts_Footer__);
 //
 //
@@ -45741,15 +45876,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 42 */
+/* 43 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(43)
+var __vue_script__ = __webpack_require__(44)
 /* template */
-var __vue_template__ = __webpack_require__(44)
+var __vue_template__ = __webpack_require__(45)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -45788,7 +45923,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 43 */
+/* 44 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -45891,18 +46026,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     beforeCreate: function beforeCreate() {
         var _this = this;
 
-        // this.fetchData()
         __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/api/home').then(function (response) {
             _this.goodsCategories = response.data;
         });
     },
 
     methods: {
-        // fetchData() {
-        //     // this.error = this.users = null;
-        //     // this.loading = true;
-
-        // },
 
         toggleShow: function toggleShow(id) {
             this.id = null;
@@ -45929,7 +46058,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 44 */
+/* 45 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -46166,15 +46295,15 @@ if (false) {
 }
 
 /***/ }),
-/* 45 */
+/* 46 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = null
+var __vue_script__ = __webpack_require__(47)
 /* template */
-var __vue_template__ = __webpack_require__(46)
+var __vue_template__ = __webpack_require__(49)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -46213,130 +46342,209 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 46 */
+/* 47 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__images_e6021a6fcd3ba0af3a10243b7a2fda0d_png__ = __webpack_require__(48);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__images_e6021a6fcd3ba0af3a10243b7a2fda0d_png___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__images_e6021a6fcd3ba0af3a10243b7a2fda0d_png__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__images_e09c44e4369232c7dd2f6495450439f1_png__ = __webpack_require__(70);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__images_e09c44e4369232c7dd2f6495450439f1_png___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__images_e09c44e4369232c7dd2f6495450439f1_png__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__images_e72ed4de906bd7ff4fec8fa90f2c63f1_png__ = __webpack_require__(71);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__images_e72ed4de906bd7ff4fec8fa90f2c63f1_png___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__images_e72ed4de906bd7ff4fec8fa90f2c63f1_png__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            img1: __WEBPACK_IMPORTED_MODULE_0__images_e6021a6fcd3ba0af3a10243b7a2fda0d_png___default.a,
+            img2: __WEBPACK_IMPORTED_MODULE_1__images_e09c44e4369232c7dd2f6495450439f1_png___default.a,
+            img3: __WEBPACK_IMPORTED_MODULE_2__images_e72ed4de906bd7ff4fec8fa90f2c63f1_png___default.a
+        };
+    }
+});
+
+/***/ }),
+/* 48 */
+/***/ (function(module, exports) {
+
+module.exports = "/images/e6021a6fcd3ba0af3a10243b7a2fda0d.png?7e6f4f3abd49a8c8cda6329a62c60772";
+
+/***/ }),
+/* 49 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("footer", { staticClass: "footer" }, [
+    _c("div", { staticClass: "container" }, [
+      _c("ul", [
+        _c("li", { staticClass: "pull-left" }, [
+          _c("div", [
+            _c("img", { staticClass: "pull-left", attrs: { src: _vm.img1 } }),
+            _vm._v(" "),
+            _c("p", { staticClass: "pull-left" }, [_vm._v("30天无忧退换货")])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("li", { staticClass: "pull-left" }, [
+          _c("div", [
+            _c("img", { staticClass: "pull-left", attrs: { src: _vm.img2 } }),
+            _vm._v(" "),
+            _c("p", { staticClass: "pull-left" }, [_vm._v("满88元免邮费")])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("li", { staticClass: "pull-left" }, [
+          _c("div", [
+            _c("img", { staticClass: "pull-left", attrs: { src: _vm.img3 } }),
+            _vm._v(" "),
+            _c("p", { staticClass: "pull-left" }, [_vm._v("简采品质保证")])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "clearfix" })
+      ]),
+      _vm._v(" "),
+      _c("div"),
+      _vm._v(" "),
+      _vm._m(0)
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("footer", { staticClass: "footer" }, [
-      _c("div", { staticClass: "container" }, [
-        _c("ul", [
-          _c("li", { staticClass: "pull-left" }, [
-            _c("div", [
-              _c("img", {
-                staticClass: "pull-left",
-                attrs: { src: "images/e6021a6fcd3ba0af3a10243b7a2fda0d.png" }
-              }),
-              _vm._v(" "),
-              _c("p", { staticClass: "pull-left" }, [_vm._v("30天无忧退换货")])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("li", { staticClass: "pull-left" }, [
-            _c("div", [
-              _c("img", {
-                staticClass: "pull-left",
-                attrs: { src: "images/e09c44e4369232c7dd2f6495450439f1.png" }
-              }),
-              _vm._v(" "),
-              _c("p", { staticClass: "pull-left" }, [_vm._v("满88元免邮费")])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("li", { staticClass: "pull-left" }, [
-            _c("div", [
-              _c("img", {
-                staticClass: "pull-left",
-                attrs: { src: "images/e72ed4de906bd7ff4fec8fa90f2c63f1.png" }
-              }),
-              _vm._v(" "),
-              _c("p", { staticClass: "pull-left" }, [_vm._v("简采品质保证")])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "clearfix" })
+    return _c("div", [
+      _c("ul", [
+        _c("li", { staticClass: "pull-left" }, [
+          _c("a", { attrs: { href: "#" } }, [_vm._v("关于我们")])
         ]),
         _vm._v(" "),
-        _c("div"),
+        _c("li", { staticClass: "pull-left" }, [_vm._v("|")]),
         _vm._v(" "),
-        _c("div", [
-          _c("ul", [
-            _c("li", { staticClass: "pull-left" }, [
-              _c("a", { attrs: { href: "#" } }, [_vm._v("关于我们")])
-            ]),
-            _vm._v(" "),
-            _c("li", { staticClass: "pull-left" }, [_vm._v("|")]),
-            _vm._v(" "),
-            _c("li", { staticClass: "pull-left" }, [
-              _c("a", { attrs: { href: "#" } }, [_vm._v("帮助中心")])
-            ]),
-            _vm._v(" "),
-            _c("li", { staticClass: "pull-left" }, [_vm._v("|")]),
-            _vm._v(" "),
-            _c("li", { staticClass: "pull-left" }, [
-              _c("a", { attrs: { href: "#" } }, [_vm._v("售后服务")])
-            ]),
-            _vm._v(" "),
-            _c("li", { staticClass: "pull-left" }, [_vm._v("|")]),
-            _vm._v(" "),
-            _c("li", { staticClass: "pull-left" }, [
-              _c("a", { attrs: { href: "#" } }, [_vm._v("配送与验收")])
-            ]),
-            _vm._v(" "),
-            _c("li", { staticClass: "pull-left" }, [_vm._v("|")]),
-            _vm._v(" "),
-            _c("li", { staticClass: "pull-left" }, [
-              _c("a", { attrs: { href: "#" } }, [_vm._v("商务合作")])
-            ]),
-            _vm._v(" "),
-            _c("li", { staticClass: "pull-left" }, [_vm._v("|")]),
-            _vm._v(" "),
-            _c("li", { staticClass: "pull-left" }, [
-              _c("a", { attrs: { href: "#" } }, [_vm._v("企业采购")])
-            ]),
-            _vm._v(" "),
-            _c("li", { staticClass: "pull-left" }, [_vm._v("|")]),
-            _vm._v(" "),
-            _c("li", { staticClass: "pull-left" }, [
-              _c("a", { attrs: { href: "#" } }, [_vm._v("开放平台")])
-            ]),
-            _vm._v(" "),
-            _c("li", { staticClass: "pull-left" }, [_vm._v("|")]),
-            _vm._v(" "),
-            _c("li", { staticClass: "pull-left" }, [
-              _c("a", { attrs: { href: "#" } }, [_vm._v("搜索推荐")])
-            ]),
-            _vm._v(" "),
-            _c("li", { staticClass: "pull-left" }, [_vm._v("|")]),
-            _vm._v(" "),
-            _c("li", { staticClass: "pull-left" }, [
-              _c("a", { attrs: { href: "#" } }, [_vm._v("友情链接")])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "clearfix" })
-          ]),
-          _vm._v(" "),
-          _c("div", [
-            _c("p", { staticClass: "pull-left" }, [
-              _vm._v("钻之峰网络科技有限公司版权所有 © 2015-2018")
-            ]),
-            _vm._v(" "),
-            _c("a", { staticClass: "pull-lfet", attrs: { href: "#" } }, [
-              _vm._v("食品经营许可证：JY13301080111719")
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "clearfix" })
-          ])
-        ])
+        _c("li", { staticClass: "pull-left" }, [
+          _c("a", { attrs: { href: "#" } }, [_vm._v("帮助中心")])
+        ]),
+        _vm._v(" "),
+        _c("li", { staticClass: "pull-left" }, [_vm._v("|")]),
+        _vm._v(" "),
+        _c("li", { staticClass: "pull-left" }, [
+          _c("a", { attrs: { href: "#" } }, [_vm._v("售后服务")])
+        ]),
+        _vm._v(" "),
+        _c("li", { staticClass: "pull-left" }, [_vm._v("|")]),
+        _vm._v(" "),
+        _c("li", { staticClass: "pull-left" }, [
+          _c("a", { attrs: { href: "#" } }, [_vm._v("配送与验收")])
+        ]),
+        _vm._v(" "),
+        _c("li", { staticClass: "pull-left" }, [_vm._v("|")]),
+        _vm._v(" "),
+        _c("li", { staticClass: "pull-left" }, [
+          _c("a", { attrs: { href: "#" } }, [_vm._v("商务合作")])
+        ]),
+        _vm._v(" "),
+        _c("li", { staticClass: "pull-left" }, [_vm._v("|")]),
+        _vm._v(" "),
+        _c("li", { staticClass: "pull-left" }, [
+          _c("a", { attrs: { href: "#" } }, [_vm._v("企业采购")])
+        ]),
+        _vm._v(" "),
+        _c("li", { staticClass: "pull-left" }, [_vm._v("|")]),
+        _vm._v(" "),
+        _c("li", { staticClass: "pull-left" }, [
+          _c("a", { attrs: { href: "#" } }, [_vm._v("开放平台")])
+        ]),
+        _vm._v(" "),
+        _c("li", { staticClass: "pull-left" }, [_vm._v("|")]),
+        _vm._v(" "),
+        _c("li", { staticClass: "pull-left" }, [
+          _c("a", { attrs: { href: "#" } }, [_vm._v("搜索推荐")])
+        ]),
+        _vm._v(" "),
+        _c("li", { staticClass: "pull-left" }, [_vm._v("|")]),
+        _vm._v(" "),
+        _c("li", { staticClass: "pull-left" }, [
+          _c("a", { attrs: { href: "#" } }, [_vm._v("友情链接")])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "clearfix" })
+      ]),
+      _vm._v(" "),
+      _c("div", [
+        _c("p", { staticClass: "pull-left" }, [
+          _vm._v("钻之峰网络科技有限公司版权所有 © 2015-2018")
+        ]),
+        _vm._v(" "),
+        _c("a", { staticClass: "pull-lfet", attrs: { href: "#" } }, [
+          _vm._v("食品经营许可证：JY13301080111719")
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "clearfix" })
       ])
     ])
   }
@@ -46351,7 +46559,7 @@ if (false) {
 }
 
 /***/ }),
-/* 47 */
+/* 50 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -46375,15 +46583,15 @@ if (false) {
 }
 
 /***/ }),
-/* 48 */
+/* 51 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(49)
+var __vue_script__ = __webpack_require__(52)
 /* template */
-var __vue_template__ = __webpack_require__(52)
+var __vue_template__ = __webpack_require__(55)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -46422,12 +46630,12 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 49 */
+/* 52 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_layouts_Carousel__ = __webpack_require__(50);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_layouts_Carousel__ = __webpack_require__(53);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_layouts_Carousel___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_layouts_Carousel__);
 //
 //
@@ -46442,7 +46650,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 50 */
+/* 53 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
@@ -46450,7 +46658,7 @@ var normalizeComponent = __webpack_require__(1)
 /* script */
 var __vue_script__ = null
 /* template */
-var __vue_template__ = __webpack_require__(51)
+var __vue_template__ = __webpack_require__(54)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -46489,7 +46697,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 51 */
+/* 54 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -46627,7 +46835,7 @@ if (false) {
 }
 
 /***/ }),
-/* 52 */
+/* 55 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -46647,15 +46855,15 @@ if (false) {
 }
 
 /***/ }),
-/* 53 */
+/* 56 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = null
+var __vue_script__ = __webpack_require__(57)
 /* template */
-var __vue_template__ = __webpack_require__(54)
+var __vue_template__ = __webpack_require__(58)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -46694,169 +46902,431 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 54 */
+/* 57 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+	name: 'Register',
+	data: function data() {
+		return {
+			name: '',
+			email: '',
+			password: '',
+			cpassword: '',
+			captcha: ''
+		};
+	},
+
+	methods: {
+		submit: function submit() {
+			var data = {
+				name: this.name,
+				email: this.email,
+				password: this.password,
+				captcha: this.captcha
+			};
+			axios.post('/api/user', data).then(function (response) {
+				console.log(response);
+			});
+		}
+	}
+
+});
+
+/***/ }),
+/* 58 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "row" }, [
+    _c("div", { staticClass: "col-md-6 col-md-offset-3" }, [
+      _c("div", { staticClass: "panel panel-default" }, [
+        _c("div", { staticClass: "panel-heading" }, [_vm._v("注册")]),
+        _vm._v(" "),
+        _c("div", { staticClass: "panel-body form-horizontal" }, [
+          _c("div", { staticClass: "form-group" }, [
+            _c(
+              "label",
+              { staticClass: "col-md-4 control-label", attrs: { for: "name" } },
+              [_vm._v("用户名")]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-md-6" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.name,
+                    expression: "name"
+                  },
+                  {
+                    name: "validator",
+                    rawName: "v-validator:input.required",
+                    value: {
+                      regex: /^[a-zA-Z]+\w*\s?\w*$/,
+                      error: "用户名要求以字母开头的单词字符"
+                    },
+                    expression:
+                      "{ regex: /^[a-zA-Z]+\\w*\\s?\\w*$/, error: '用户名要求以字母开头的单词字符' }",
+                    arg: "input",
+                    modifiers: { required: true }
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: {
+                  id: "name",
+                  type: "text",
+                  name: "name",
+                  required: "",
+                  autofocus: ""
+                },
+                domProps: { value: _vm.name },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.name = $event.target.value
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _vm._m(0)
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-group" }, [
+            _c(
+              "label",
+              {
+                staticClass: "col-md-4 control-label",
+                attrs: { for: "email" }
+              },
+              [_vm._v("E-Mail 地址")]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-md-6" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.email,
+                    expression: "email"
+                  },
+                  {
+                    name: "validator",
+                    rawName: "v-validator:input.required",
+                    value: {
+                      regex: /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/,
+                      error: "邮箱地址正确格式为 xxx@xxx.xxx"
+                    },
+                    expression:
+                      "{ regex: /^\\w+([-+.]\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*$/, error: '邮箱地址正确格式为 xxx@xxx.xxx' }",
+                    arg: "input",
+                    modifiers: { required: true }
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: {
+                  id: "email",
+                  type: "email",
+                  name: "email",
+                  required: ""
+                },
+                domProps: { value: _vm.email },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.email = $event.target.value
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _vm._m(1)
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-group" }, [
+            _c(
+              "label",
+              {
+                staticClass: "col-md-4 control-label",
+                attrs: { for: "password" }
+              },
+              [_vm._v("密码")]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-md-6" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.password,
+                    expression: "password"
+                  },
+                  {
+                    name: "validator",
+                    rawName: "v-validator.required",
+                    value: {
+                      regex: /^\w{6,16}$/,
+                      error: "密码要求 6 ~ 16 个单词字符"
+                    },
+                    expression:
+                      "{ regex: /^\\w{6,16}$/, error: '密码要求 6 ~ 16 个单词字符' }",
+                    modifiers: { required: true }
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: {
+                  id: "password",
+                  type: "password",
+                  name: "password",
+                  required: ""
+                },
+                domProps: { value: _vm.password },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.password = $event.target.value
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _vm._m(2)
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-group" }, [
+            _c(
+              "label",
+              {
+                staticClass: "col-md-4 control-label",
+                attrs: { for: "password-confirm" }
+              },
+              [_vm._v("再次输入密码")]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-md-6" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.cpassword,
+                    expression: "cpassword"
+                  },
+                  {
+                    name: "validator",
+                    rawName: "v-validator.required",
+                    value: { target: "#password" },
+                    expression: "{ target: '#password' }",
+                    modifiers: { required: true }
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: {
+                  id: "cpassword",
+                  type: "password",
+                  name: "cpassword",
+                  required: ""
+                },
+                domProps: { value: _vm.cpassword },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.cpassword = $event.target.value
+                  }
+                }
+              })
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-group" }, [
+            _c(
+              "label",
+              {
+                staticClass: "col-md-4 control-label",
+                attrs: { for: "captcha" }
+              },
+              [_vm._v("图片验证码")]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-md-4" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.captcha,
+                    expression: "captcha"
+                  },
+                  {
+                    name: "validator",
+                    rawName: "v-validator.required",
+                    value: { title: "图片验证码" },
+                    expression: "{ title: '图片验证码' }",
+                    modifiers: { required: true }
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { id: "captcha", name: "captcha" },
+                domProps: { value: _vm.captcha },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.captcha = $event.target.value
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _vm._m(3)
+            ]),
+            _vm._v(" "),
+            _c("img", {
+              staticClass: "col-md-2 pull-left thumbnail captcha",
+              attrs: {
+                src: "/captcha/flat",
+                onclick: "this.src='/captcha/flat?'+Math.random()",
+                title: "点击图片重新获取验证码"
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-group" }, [
+            _c("div", { staticClass: "col-md-6 col-md-offset-4" }, [
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-primary",
+                  attrs: { type: "submit" },
+                  on: { click: _vm.submit }
+                },
+                [_vm._v("\n\t\t\t\t\t\t\t注册 \n\t\t\t\t\t\t")]
+              )
+            ])
+          ])
+        ])
+      ])
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-6 col-md-offset-3" }, [
-        _c("div", { staticClass: "panel panel-default" }, [
-          _c("div", { staticClass: "panel-heading" }, [_vm._v("注册")]),
-          _vm._v(" "),
-          _c("div", { staticClass: "panel-body form-horizontal" }, [
-            _c("div", { staticClass: "form-group" }, [
-              _c(
-                "label",
-                {
-                  staticClass: "col-md-4 control-label",
-                  attrs: { for: "name" }
-                },
-                [_vm._v("用户名")]
-              ),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-md-6" }, [
-                _c("input", {
-                  staticClass: "form-control",
-                  attrs: {
-                    id: "name",
-                    type: "text",
-                    name: "name",
-                    value: "",
-                    required: "",
-                    autofocus: ""
-                  }
-                }),
-                _vm._v(" "),
-                _c("span", { staticClass: "help-block" }, [_c("strong")])
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-group" }, [
-              _c(
-                "label",
-                {
-                  staticClass: "col-md-4 control-label",
-                  attrs: { for: "email" }
-                },
-                [_vm._v("E-Mail 地址")]
-              ),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-md-6" }, [
-                _c("input", {
-                  staticClass: "form-control",
-                  attrs: {
-                    id: "email",
-                    type: "email",
-                    name: "email",
-                    value: "",
-                    required: ""
-                  }
-                }),
-                _vm._v(" "),
-                _c("span", { staticClass: "help-block" }, [_c("strong")])
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-group" }, [
-              _c(
-                "label",
-                {
-                  staticClass: "col-md-4 control-label",
-                  attrs: { for: "password" }
-                },
-                [_vm._v("密码")]
-              ),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-md-6" }, [
-                _c("input", {
-                  staticClass: "form-control",
-                  attrs: {
-                    id: "password",
-                    type: "password",
-                    name: "password",
-                    required: ""
-                  }
-                }),
-                _vm._v(" "),
-                _c("span", { staticClass: "help-block" }, [_c("strong")])
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-group" }, [
-              _c(
-                "label",
-                {
-                  staticClass: "col-md-4 control-label",
-                  attrs: { for: "password-confirm" }
-                },
-                [_vm._v("再次输入密码")]
-              ),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-md-6" }, [
-                _c("input", {
-                  staticClass: "form-control",
-                  attrs: {
-                    id: "password-confirm",
-                    type: "password",
-                    name: "password_confirmation",
-                    required: ""
-                  }
-                })
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-group" }, [
-              _c(
-                "label",
-                {
-                  staticClass: "col-md-4 control-label",
-                  attrs: { for: "captcha" }
-                },
-                [_vm._v("验证码")]
-              ),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-md-4" }, [
-                _c("input", {
-                  staticClass: "form-control",
-                  attrs: { id: "captcha", name: "captcha" }
-                }),
-                _vm._v(" "),
-                _c("span", { staticClass: "help-block" }, [_c("strong")])
-              ]),
-              _vm._v(" "),
-              _c("img", {
-                staticClass: "col-md-2 pull-left thumbnail captcha",
-                attrs: {
-                  src: "/captcha/flat",
-                  onclick: "this.src='/captcha/flat?'+Math.random()",
-                  title: "点击图片重新获取验证码"
-                }
-              })
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-group" }, [
-              _c("div", { staticClass: "col-md-6 col-md-offset-4" }, [
-                _c(
-                  "button",
-                  { staticClass: "btn btn-primary", attrs: { type: "submit" } },
-                  [_vm._v("\n\t\t\t\t\t\t\t注册 \n\t\t\t\t\t\t")]
-                )
-              ])
-            ])
-          ])
-        ])
-      ])
-    ])
+    return _c("span", { staticClass: "help-block" }, [_c("strong")])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "help-block" }, [_c("strong")])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "help-block" }, [_c("strong")])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "help-block" }, [_c("strong")])
   }
 ]
 render._withStripped = true
@@ -46869,10 +47339,32 @@ if (false) {
 }
 
 /***/ }),
-/* 55 */
+/* 59 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 60 */,
+/* 61 */,
+/* 62 */,
+/* 63 */,
+/* 64 */,
+/* 65 */,
+/* 66 */,
+/* 67 */,
+/* 68 */,
+/* 69 */,
+/* 70 */
+/***/ (function(module, exports) {
+
+module.exports = "/images/e09c44e4369232c7dd2f6495450439f1.png?08671cfe361da618ccebde4a429fa3a8";
+
+/***/ }),
+/* 71 */
+/***/ (function(module, exports) {
+
+module.exports = "/images/e72ed4de906bd7ff4fec8fa90f2c63f1.png?ffbd2218919b5ee6b3e368365809e4ea";
 
 /***/ })
 /******/ ]);
