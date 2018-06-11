@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UserRequest;
+use App\User;
 
 class UserController extends Controller
 {
@@ -23,9 +25,14 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UserRequest $request)
     {
-        return $request->all();
+        if(User::create($request->all())){
+            return [
+                'status' => '200',
+                'message'=> '注册成功!',
+            ];
+        }
     }
 
     /**

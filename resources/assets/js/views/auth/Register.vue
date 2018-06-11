@@ -4,7 +4,9 @@
 			<div class="panel panel-default">
 				<div class="panel-heading">注册</div>
 
+
 				<div class="panel-body form-horizontal">
+                    <p class="col-md-6 col-md-offset-4" :class="textStatus" v-for="message in messages">{{ message[0] }}</p>
 
 					<div class="form-group">
 						<label for="name" class="col-md-4 control-label">用户名</label>
@@ -46,7 +48,7 @@
 						<label for="password-confirm" class="col-md-4 control-label">再次输入密码</label>
 
 						<div class="col-md-6">
-							<input id="cpassword" v-model="cpassword" v-validator.required="{ target: '#password' }" type="password" class="form-control" name="cpassword" required>
+							<input id="password_confirmation" v-model="password_confirmation" v-validator.required="{ target: '#password' }" type="password" class="form-control" name="password_confirmation" required>
 						</div>
 					</div>
 
@@ -82,23 +84,39 @@
 				name: '',
 				email: '',
 				password: '',
-				cpassword: '',
+				password_confirmation: '',
 				captcha: '',
+                messages: '',
+                textStatus:'text-danger',
 			}
 		},
 		methods: {
-			submit() {
-				const data = {
-					name: this.name,
-					email: this.email,
-					password: this.password,
-					captcha: this.captcha,
-				}
-				axios.post('/api/user',data).then(response =>{
-					console.log(response)
-				});
-			}
-		}
+            submit() {
+                const data = {
+                    name: this.name,
+                    email: this.email,
+                    password: this.password,
+                    password_confirmation: this.password_confirmation,
+                    captcha: this.captcha,
+                }
+                axios.post('/api/user',data)
+                    .then((response) => {
+                        if(response.status == 200){
+                            this.textStatus = 'text-success',
+                                this.messages = response.data.message
+                        }
+                        console.log(response)
+                    })
+                    .catch((error) => {
+                        if(error.response.status == 422){
+                            this.textStatus = 'text-danger',
+                            this.messages = error.response.data.errors
+                            //console.log(error.response.data.errors);
+                        }
+                    });
+            },
+		},
+
 
 	}
 </script>

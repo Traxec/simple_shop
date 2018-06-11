@@ -1078,7 +1078,7 @@ module.exports = Cancel;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(12);
-module.exports = __webpack_require__(59);
+module.exports = __webpack_require__(61);
 
 
 /***/ }),
@@ -1093,9 +1093,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__directives_validator__ = __webpack_require__(40);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__views_App__ = __webpack_require__(41);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__views_App___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__views_App__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__views_Home__ = __webpack_require__(51);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__views_Home__ = __webpack_require__(53);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__views_Home___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__views_Home__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__views_auth_Register__ = __webpack_require__(56);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__views_auth_Register__ = __webpack_require__(58);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__views_auth_Register___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__views_auth_Register__);
 __webpack_require__(13);
 
@@ -45808,7 +45808,7 @@ var normalizeComponent = __webpack_require__(1)
 /* script */
 var __vue_script__ = __webpack_require__(42)
 /* template */
-var __vue_template__ = __webpack_require__(50)
+var __vue_template__ = __webpack_require__(52)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -46303,7 +46303,7 @@ var normalizeComponent = __webpack_require__(1)
 /* script */
 var __vue_script__ = __webpack_require__(47)
 /* template */
-var __vue_template__ = __webpack_require__(49)
+var __vue_template__ = __webpack_require__(51)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -46349,9 +46349,9 @@ module.exports = Component.exports
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__images_e6021a6fcd3ba0af3a10243b7a2fda0d_png__ = __webpack_require__(48);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__images_e6021a6fcd3ba0af3a10243b7a2fda0d_png___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__images_e6021a6fcd3ba0af3a10243b7a2fda0d_png__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__images_e09c44e4369232c7dd2f6495450439f1_png__ = __webpack_require__(70);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__images_e09c44e4369232c7dd2f6495450439f1_png__ = __webpack_require__(49);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__images_e09c44e4369232c7dd2f6495450439f1_png___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__images_e09c44e4369232c7dd2f6495450439f1_png__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__images_e72ed4de906bd7ff4fec8fa90f2c63f1_png__ = __webpack_require__(71);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__images_e72ed4de906bd7ff4fec8fa90f2c63f1_png__ = __webpack_require__(50);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__images_e72ed4de906bd7ff4fec8fa90f2c63f1_png___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__images_e72ed4de906bd7ff4fec8fa90f2c63f1_png__);
 //
 //
@@ -46431,6 +46431,18 @@ module.exports = "/images/e6021a6fcd3ba0af3a10243b7a2fda0d.png?7e6f4f3abd49a8c8c
 
 /***/ }),
 /* 49 */
+/***/ (function(module, exports) {
+
+module.exports = "/images/e09c44e4369232c7dd2f6495450439f1.png?08671cfe361da618ccebde4a429fa3a8";
+
+/***/ }),
+/* 50 */
+/***/ (function(module, exports) {
+
+module.exports = "/images/e72ed4de906bd7ff4fec8fa90f2c63f1.png?ffbd2218919b5ee6b3e368365809e4ea";
+
+/***/ }),
+/* 51 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -46559,7 +46571,7 @@ if (false) {
 }
 
 /***/ }),
-/* 50 */
+/* 52 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -46583,15 +46595,15 @@ if (false) {
 }
 
 /***/ }),
-/* 51 */
+/* 53 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(52)
+var __vue_script__ = __webpack_require__(54)
 /* template */
-var __vue_template__ = __webpack_require__(55)
+var __vue_template__ = __webpack_require__(57)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -46630,12 +46642,12 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 52 */
+/* 54 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_layouts_Carousel__ = __webpack_require__(53);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_layouts_Carousel__ = __webpack_require__(55);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_layouts_Carousel___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_layouts_Carousel__);
 //
 //
@@ -46650,7 +46662,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 53 */
+/* 55 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
@@ -46658,7 +46670,7 @@ var normalizeComponent = __webpack_require__(1)
 /* script */
 var __vue_script__ = null
 /* template */
-var __vue_template__ = __webpack_require__(54)
+var __vue_template__ = __webpack_require__(56)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -46697,7 +46709,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 54 */
+/* 56 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -46835,7 +46847,7 @@ if (false) {
 }
 
 /***/ }),
-/* 55 */
+/* 57 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -46855,15 +46867,15 @@ if (false) {
 }
 
 /***/ }),
-/* 56 */
+/* 58 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(57)
+var __vue_script__ = __webpack_require__(59)
 /* template */
-var __vue_template__ = __webpack_require__(58)
+var __vue_template__ = __webpack_require__(60)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -46902,7 +46914,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 57 */
+/* 59 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -46983,37 +46995,52 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-	name: 'Register',
-	data: function data() {
-		return {
-			name: '',
-			email: '',
-			password: '',
-			cpassword: '',
-			captcha: ''
-		};
-	},
+    name: 'Register',
+    data: function data() {
+        return {
+            name: '',
+            email: '',
+            password: '',
+            password_confirmation: '',
+            captcha: '',
+            messages: '',
+            textStatus: 'text-danger'
+        };
+    },
 
-	methods: {
-		submit: function submit() {
-			var data = {
-				name: this.name,
-				email: this.email,
-				password: this.password,
-				captcha: this.captcha
-			};
-			axios.post('/api/user', data).then(function (response) {
-				console.log(response);
-			});
-		}
-	}
+    methods: {
+        submit: function submit() {
+            var _this = this;
+
+            var data = {
+                name: this.name,
+                email: this.email,
+                password: this.password,
+                password_confirmation: this.password_confirmation,
+                captcha: this.captcha
+            };
+            axios.post('/api/user', data).then(function (response) {
+                if (response.status == 200) {
+                    _this.textStatus = 'text-success', _this.messages = response.data.message;
+                }
+                console.log(response);
+            }).catch(function (error) {
+                if (error.response.status == 422) {
+                    _this.textStatus = 'text-danger', _this.messages = error.response.data.errors;
+                    //console.log(error.response.data.errors);
+                }
+            });
+        }
+    }
 
 });
 
 /***/ }),
-/* 58 */
+/* 60 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -47025,280 +47052,299 @@ var render = function() {
       _c("div", { staticClass: "panel panel-default" }, [
         _c("div", { staticClass: "panel-heading" }, [_vm._v("注册")]),
         _vm._v(" "),
-        _c("div", { staticClass: "panel-body form-horizontal" }, [
-          _c("div", { staticClass: "form-group" }, [
-            _c(
-              "label",
-              { staticClass: "col-md-4 control-label", attrs: { for: "name" } },
-              [_vm._v("用户名")]
-            ),
+        _c(
+          "div",
+          { staticClass: "panel-body form-horizontal" },
+          [
+            _vm._l(_vm.messages, function(message) {
+              return _c(
+                "p",
+                {
+                  staticClass: "col-md-6 col-md-offset-4",
+                  class: _vm.textStatus
+                },
+                [_vm._v(_vm._s(message[0]))]
+              )
+            }),
             _vm._v(" "),
-            _c("div", { staticClass: "col-md-6" }, [
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.name,
-                    expression: "name"
-                  },
-                  {
-                    name: "validator",
-                    rawName: "v-validator:input.required",
-                    value: {
-                      regex: /^[a-zA-Z]+\w*\s?\w*$/,
-                      error: "用户名要求以字母开头的单词字符"
+            _c("div", { staticClass: "form-group" }, [
+              _c(
+                "label",
+                {
+                  staticClass: "col-md-4 control-label",
+                  attrs: { for: "name" }
+                },
+                [_vm._v("用户名")]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-md-6" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.name,
+                      expression: "name"
                     },
-                    expression:
-                      "{ regex: /^[a-zA-Z]+\\w*\\s?\\w*$/, error: '用户名要求以字母开头的单词字符' }",
-                    arg: "input",
-                    modifiers: { required: true }
-                  }
-                ],
-                staticClass: "form-control",
-                attrs: {
-                  id: "name",
-                  type: "text",
-                  name: "name",
-                  required: "",
-                  autofocus: ""
-                },
-                domProps: { value: _vm.name },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
+                    {
+                      name: "validator",
+                      rawName: "v-validator:input.required",
+                      value: {
+                        regex: /^[a-zA-Z]+\w*\s?\w*$/,
+                        error: "用户名要求以字母开头的单词字符"
+                      },
+                      expression:
+                        "{ regex: /^[a-zA-Z]+\\w*\\s?\\w*$/, error: '用户名要求以字母开头的单词字符' }",
+                      arg: "input",
+                      modifiers: { required: true }
                     }
-                    _vm.name = $event.target.value
-                  }
-                }
-              }),
-              _vm._v(" "),
-              _vm._m(0)
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "form-group" }, [
-            _c(
-              "label",
-              {
-                staticClass: "col-md-4 control-label",
-                attrs: { for: "email" }
-              },
-              [_vm._v("E-Mail 地址")]
-            ),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-md-6" }, [
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.email,
-                    expression: "email"
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    id: "name",
+                    type: "text",
+                    name: "name",
+                    required: "",
+                    autofocus: ""
                   },
-                  {
-                    name: "validator",
-                    rawName: "v-validator:input.required",
-                    value: {
-                      regex: /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/,
-                      error: "邮箱地址正确格式为 xxx@xxx.xxx"
-                    },
-                    expression:
-                      "{ regex: /^\\w+([-+.]\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*$/, error: '邮箱地址正确格式为 xxx@xxx.xxx' }",
-                    arg: "input",
-                    modifiers: { required: true }
-                  }
-                ],
-                staticClass: "form-control",
-                attrs: {
-                  id: "email",
-                  type: "email",
-                  name: "email",
-                  required: ""
-                },
-                domProps: { value: _vm.email },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
+                  domProps: { value: _vm.name },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.name = $event.target.value
                     }
-                    _vm.email = $event.target.value
                   }
-                }
-              }),
-              _vm._v(" "),
-              _vm._m(1)
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "form-group" }, [
-            _c(
-              "label",
-              {
-                staticClass: "col-md-4 control-label",
-                attrs: { for: "password" }
-              },
-              [_vm._v("密码")]
-            ),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-md-6" }, [
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.password,
-                    expression: "password"
-                  },
-                  {
-                    name: "validator",
-                    rawName: "v-validator.required",
-                    value: {
-                      regex: /^\w{6,16}$/,
-                      error: "密码要求 6 ~ 16 个单词字符"
-                    },
-                    expression:
-                      "{ regex: /^\\w{6,16}$/, error: '密码要求 6 ~ 16 个单词字符' }",
-                    modifiers: { required: true }
-                  }
-                ],
-                staticClass: "form-control",
-                attrs: {
-                  id: "password",
-                  type: "password",
-                  name: "password",
-                  required: ""
-                },
-                domProps: { value: _vm.password },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.password = $event.target.value
-                  }
-                }
-              }),
-              _vm._v(" "),
-              _vm._m(2)
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "form-group" }, [
-            _c(
-              "label",
-              {
-                staticClass: "col-md-4 control-label",
-                attrs: { for: "password-confirm" }
-              },
-              [_vm._v("再次输入密码")]
-            ),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-md-6" }, [
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.cpassword,
-                    expression: "cpassword"
-                  },
-                  {
-                    name: "validator",
-                    rawName: "v-validator.required",
-                    value: { target: "#password" },
-                    expression: "{ target: '#password' }",
-                    modifiers: { required: true }
-                  }
-                ],
-                staticClass: "form-control",
-                attrs: {
-                  id: "cpassword",
-                  type: "password",
-                  name: "cpassword",
-                  required: ""
-                },
-                domProps: { value: _vm.cpassword },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.cpassword = $event.target.value
-                  }
-                }
-              })
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "form-group" }, [
-            _c(
-              "label",
-              {
-                staticClass: "col-md-4 control-label",
-                attrs: { for: "captcha" }
-              },
-              [_vm._v("图片验证码")]
-            ),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-md-4" }, [
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.captcha,
-                    expression: "captcha"
-                  },
-                  {
-                    name: "validator",
-                    rawName: "v-validator.required",
-                    value: { title: "图片验证码" },
-                    expression: "{ title: '图片验证码' }",
-                    modifiers: { required: true }
-                  }
-                ],
-                staticClass: "form-control",
-                attrs: { id: "captcha", name: "captcha" },
-                domProps: { value: _vm.captcha },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.captcha = $event.target.value
-                  }
-                }
-              }),
-              _vm._v(" "),
-              _vm._m(3)
+                }),
+                _vm._v(" "),
+                _vm._m(0)
+              ])
             ]),
             _vm._v(" "),
-            _c("img", {
-              staticClass: "col-md-2 pull-left thumbnail captcha",
-              attrs: {
-                src: "/captcha/flat",
-                onclick: "this.src='/captcha/flat?'+Math.random()",
-                title: "点击图片重新获取验证码"
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "form-group" }, [
-            _c("div", { staticClass: "col-md-6 col-md-offset-4" }, [
+            _c("div", { staticClass: "form-group" }, [
               _c(
-                "button",
+                "label",
                 {
-                  staticClass: "btn btn-primary",
-                  attrs: { type: "submit" },
-                  on: { click: _vm.submit }
+                  staticClass: "col-md-4 control-label",
+                  attrs: { for: "email" }
                 },
-                [_vm._v("\n\t\t\t\t\t\t\t注册 \n\t\t\t\t\t\t")]
-              )
+                [_vm._v("E-Mail 地址")]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-md-6" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.email,
+                      expression: "email"
+                    },
+                    {
+                      name: "validator",
+                      rawName: "v-validator:input.required",
+                      value: {
+                        regex: /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/,
+                        error: "邮箱地址正确格式为 xxx@xxx.xxx"
+                      },
+                      expression:
+                        "{ regex: /^\\w+([-+.]\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*$/, error: '邮箱地址正确格式为 xxx@xxx.xxx' }",
+                      arg: "input",
+                      modifiers: { required: true }
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    id: "email",
+                    type: "email",
+                    name: "email",
+                    required: ""
+                  },
+                  domProps: { value: _vm.email },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.email = $event.target.value
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _vm._m(1)
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group" }, [
+              _c(
+                "label",
+                {
+                  staticClass: "col-md-4 control-label",
+                  attrs: { for: "password" }
+                },
+                [_vm._v("密码")]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-md-6" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.password,
+                      expression: "password"
+                    },
+                    {
+                      name: "validator",
+                      rawName: "v-validator.required",
+                      value: {
+                        regex: /^\w{6,16}$/,
+                        error: "密码要求 6 ~ 16 个单词字符"
+                      },
+                      expression:
+                        "{ regex: /^\\w{6,16}$/, error: '密码要求 6 ~ 16 个单词字符' }",
+                      modifiers: { required: true }
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    id: "password",
+                    type: "password",
+                    name: "password",
+                    required: ""
+                  },
+                  domProps: { value: _vm.password },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.password = $event.target.value
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _vm._m(2)
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group" }, [
+              _c(
+                "label",
+                {
+                  staticClass: "col-md-4 control-label",
+                  attrs: { for: "password-confirm" }
+                },
+                [_vm._v("再次输入密码")]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-md-6" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.password_confirmation,
+                      expression: "password_confirmation"
+                    },
+                    {
+                      name: "validator",
+                      rawName: "v-validator.required",
+                      value: { target: "#password" },
+                      expression: "{ target: '#password' }",
+                      modifiers: { required: true }
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    id: "password_confirmation",
+                    type: "password",
+                    name: "password_confirmation",
+                    required: ""
+                  },
+                  domProps: { value: _vm.password_confirmation },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.password_confirmation = $event.target.value
+                    }
+                  }
+                })
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group" }, [
+              _c(
+                "label",
+                {
+                  staticClass: "col-md-4 control-label",
+                  attrs: { for: "captcha" }
+                },
+                [_vm._v("图片验证码")]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-md-4" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.captcha,
+                      expression: "captcha"
+                    },
+                    {
+                      name: "validator",
+                      rawName: "v-validator.required",
+                      value: { title: "图片验证码" },
+                      expression: "{ title: '图片验证码' }",
+                      modifiers: { required: true }
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { id: "captcha", name: "captcha" },
+                  domProps: { value: _vm.captcha },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.captcha = $event.target.value
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _vm._m(3)
+              ]),
+              _vm._v(" "),
+              _c("img", {
+                staticClass: "col-md-2 pull-left thumbnail captcha",
+                attrs: {
+                  src: "/captcha/flat",
+                  onclick: "this.src='/captcha/flat?'+Math.random()",
+                  title: "点击图片重新获取验证码"
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group" }, [
+              _c("div", { staticClass: "col-md-6 col-md-offset-4" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-primary",
+                    attrs: { type: "submit" },
+                    on: { click: _vm.submit }
+                  },
+                  [_vm._v("\n\t\t\t\t\t\t\t\t注册 \n\t\t\t\t\t\t\t")]
+                )
+              ])
             ])
-          ])
-        ])
+          ],
+          2
+        )
       ])
     ])
   ])
@@ -47339,32 +47385,10 @@ if (false) {
 }
 
 /***/ }),
-/* 59 */
+/* 61 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 60 */,
-/* 61 */,
-/* 62 */,
-/* 63 */,
-/* 64 */,
-/* 65 */,
-/* 66 */,
-/* 67 */,
-/* 68 */,
-/* 69 */,
-/* 70 */
-/***/ (function(module, exports) {
-
-module.exports = "/images/e09c44e4369232c7dd2f6495450439f1.png?08671cfe361da618ccebde4a429fa3a8";
-
-/***/ }),
-/* 71 */
-/***/ (function(module, exports) {
-
-module.exports = "/images/e72ed4de906bd7ff4fec8fa90f2c63f1.png?ffbd2218919b5ee6b3e368365809e4ea";
 
 /***/ })
 /******/ ]);

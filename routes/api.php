@@ -13,9 +13,9 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+/* Route::middleware('auth:api')->get('/user', function (Request $request) { */
+/*     return $request->user(); */
+/* }); */
 
 Route::apiResource('home','Api\HomeController');
 Route::apiResource('user','Api\UserController');
